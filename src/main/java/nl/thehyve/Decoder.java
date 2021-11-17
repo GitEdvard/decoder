@@ -9,7 +9,8 @@ public class Decoder {
         if (useSimple != null && useSimple.equals("1")) {
             decoder = new SimpleDecoder();
         }
-
+	
+	// I would like plain byte arrays as input to the decoder
         decoder.decode(System.in, new ByteArrayRingBuffer(System.out), System.err);
     }
 }

@@ -22,7 +22,9 @@ public interface DecoderInterface {
     default void decode(byte[] pair, ByteArrayRingBuffer decodedStream, OutputStream reEncodedStream) throws IOException {
         // a pair is invalid if the offset is larger than 0 and the length is larger than the offset
         if ((pair[0] > 0 && pair[1] > pair[0])) {
+	    // I would like the validation of the input gathered in one place 
             decodedStream.write(0x3f);
+	    // I would like the encoding algorithm be able to be used on its own. Here it's dependent upon an already encoded sequence. 
             reEncodedStream.write(new byte[]{0x00, 0x3f});
             return;
         }

@@ -31,6 +31,8 @@ public class CompressingDecoder implements DecoderInterface {
         if (pos == maxSize) {
             // buffer is full, we need to write now
             for (int i = 0; i < pos; i++) {
+		// This is the "trivial implementation" as mentioned in the task, and it's duplicated
+		// at another place in code. 
                 reEncodedStream.write(0x00);
                 reEncodedStream.write(reEncodeBuffer[i]);
             }
